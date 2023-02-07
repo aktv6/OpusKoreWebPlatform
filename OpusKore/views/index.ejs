@@ -1,0 +1,30 @@
+<%- include('./partials/header.ejs')%>
+    <main id="main" class="main" role="maincontent">
+        <div class ="homepage" id="homepage">
+            <div class="main-component">
+                <div class="text-container-1">
+                    <div class="headlineText"><h2 class="h2">Explore various <br> artists and genres </h2></div>
+                    <div class="subText"><p>From popular new releases <br> to rare collectible finds <br><br> Opus Kore has everything <br> you are looking for </p></div>
+                    <button id="exploreBtn" class="ctaLink" type="button">Explore</button>
+                </div>
+                <div class="image-container"><img src="../public/images_folder/vinyls_main_1.jpg" alt="main-img" /></div>
+            </div>
+            <div class="main-component">
+                <div class="image-container"><img src="../public/images_folder/vinyls_main_2.jpg" alt="main-img" /></div>
+                <div class="text-container-2">
+                    <div class="headlineText"><h2 class="h2">Join the marketplace</h2></div>
+                    <div class="subText"><p> Find what you love <br> or discover new music. <br><br> Exchange and enjoy music <br> in a more meaningful way </p></div>
+                    <button id="sellBtn" class="ctaLink" type="button">List item</button>
+                </div> 
+            </div> 
+            <script>
+                document.getElementById("exploreBtn").onclick = function () {
+                    location.href = "/trades";
+                };
+                document.getElementById("sellBtn").onclick = function () {
+                    location.href = "/trades/new";
+                };
+            </script>
+        </div>
+    </main>
+<%- include('./partials/footer.ejs')%>

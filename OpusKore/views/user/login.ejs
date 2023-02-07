@@ -1,0 +1,36 @@
+<%- include('../partials/header.ejs')%>
+    <div class = "content">
+        <h2>User login</h2>
+        <div class="content-items">
+            <div class="content-form">
+                <form class="form-new">
+                    <table>
+                        <tr>
+                            <td class="align-top"><label for="email">Email Address</label></td>
+                            <td><input type="email" id="email" name="email" class = "fixed-width" required></td>
+                        </tr>
+                        <tr>
+                            <td class="align-top"><label for="password">Password</label></td>
+                            <td><input type="password" id="password" name="password" class = "fixed-width" required></td>
+                        </tr>
+                        <tr class="tr-buttons">
+                            <td><button id="btn" class="btnLink" type="button">Cancel</button></td>
+                            <td><button type="submit" formmethod="POST" formaction="/users/login">Login</button></td>
+                        </tr>
+                    </table> 
+                </form>  
+                <script>
+                    document.getElementById("btn").onclick = function () {
+                        location.href = "/";
+                    };
+                </script>
+                <div class="content-new">
+                    <p>Don't have an account? <a class="signup-link" href="newUser">Sign Up</a></p>
+                </div>      
+            </div>
+            <div class="content-new-img">
+                <img src="../public/images_folder/new_user.jpg" alt="create-img" />
+            </div>
+        </div>
+    </div>
+<%- include('../partials/footer.ejs')%>

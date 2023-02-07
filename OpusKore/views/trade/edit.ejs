@@ -1,0 +1,60 @@
+<%- include('../partials/header.ejs')%>
+    <div class="content">
+        <h2>Edit Item: <%=trade.title%> by <%=trade.owner.userName%></h2>
+        <div class = "content-edit">
+            <div class="content-form">
+                <form>
+                    <table> 
+                        <tr>
+                            <td class="align-top"><label for="title">Title</label></td>
+                            <td><input type="text" id="title" name="title" value="<%=trade.title%>" class="fixed-width" required></td>
+                        </tr>
+                        <tr>
+                            <td class="align-top"><label for="artist">Artist</label></td>
+                            <td class="align-top"><input type="text" id="artist" name="artist" value="<%=trade.artist%>" class="fixed-width" required></td>
+                        </tr>
+                        <tr> 
+                            <td class="align-top"><label for="genre">Genre</label></td>
+                            <td><input type="text" id="genre" name="genre" value="<%=trade.genre%>" class="fixed-width" required></td>
+                        </tr>
+                        <tr>
+                            <td class="align-top"><label for="price">Price (US$)</label></td>
+                            <td><input type="number" step="0.01" id="price" name="price" value="<%=trade.price%>" class="fixed-width" required min="5" max="500"></td>
+                        </tr>
+                        <tr>
+                            <td class="align-top"><label for="status">Status</label></td>
+                            <td>
+                                <%if(trade.status == "Available") {%>
+                                    <input type="radio" id="status_in" name="status" value="Available" checked>
+                                    <label for="Available">Available</label><br>
+                                    <input type="radio" id="Unavailable" name="status" value="Unavailable">
+                                    <label for="Unavailable">Unavailable</label><br>
+                                <%}
+                                else {%>
+                                    <input type="radio" id="status_in" name="status" value="Available">
+                                    <label for="Available">Available</label><br>
+                                    <input type="radio" id="status_out" name="status" value="Unavailable" checked>
+                                    <label for="Unavailable">Unavailable</label><br>
+                                <%}%>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="align-top"><label for="details">Details</label></td>
+                            <td><textarea rows="5" id="details" name="details" class="fixed-width" required minlength="10"><%=trade.details%></textarea></td>
+                        </tr>
+                        <tr class="tr-buttons">
+                            <td><button class="btnLink" type="button" id="btn">Cancel</button></td>
+                            <td><button type="submit" formmethod="POST" formaction="/trades/<%=trade._id%>?_method=PUT">Submit</button></td>
+                        </tr>
+                    </table>
+                    <script>
+                        document.getElementById("btn").onclick = function () {
+                            location.href = "/trades/<%=trade._id%>";
+                        };
+                    </script>
+                </form>
+            </div>
+            <div class="content-edit-img"><img src="<%=trade.img%>" alt="trade-img"></div>
+        </div>
+    </div>
+<%- include('../partials/footer.ejs')%>

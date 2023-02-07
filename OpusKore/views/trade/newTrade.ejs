@@ -1,0 +1,68 @@
+<%- include('../partials/header.ejs')%>
+    <div class = "content">
+        <h2>List a record</h2>
+        <div class="content-items">
+            <div class="content-form">
+                <form class="form-new">
+                    <table>
+                        <tr>
+                            <td class="align-top"><label for="title">Title</label></td>
+                            <td><input type="text" id="title" name="title" class="fixed-width" required></td>
+                        </tr>
+                        <tr>
+                            <td class="align-top"><label for="artist">Artist</label></td>
+                            <td><input type="text" id="artist" name="artist" class="fixed-width" required></td>
+                        </tr>
+                        <tr>
+                            <td class="align-top"><label for="genre">Genre</label></td>
+                            <td>
+                                <% if(genres.size) {%>
+                                    <input list="genres" id="genre" name="genre" class="fixed-width" required>
+                                    <datalist id="genres">
+                                        <% genres.forEach((val) => {%>
+                                            <option value="<%=val%>">
+                                        <%})%>
+                                    </datalist>
+                                <%}%>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="align-top"><label for="price">Price (US$)</label></td>
+                            <td><input type="number" step="0.01" id="price" name="price" class="fixed-width" required min="5" max="500"></td>
+                        </tr>
+                        <tr>
+                            <td class="align-top"><label for="status">Status</label></td>
+                            <td class="radio-buttons">
+                                <input type="radio" id="status_in" name="status" value="Available" checked required>
+                                <label for="Available">Available</label><br>
+                                <input type="radio" id="status_out" name="status" value="Unavailable" required>
+                                <label for="Unavailable">Unavailable</label><br>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="align-top"><label for="details">Details</label></td>
+                            <td><textarea rows="5" id="details" name="details" class="fixed-width" required minlength="10"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td class="align-top"><label for="img">Image File</label></td>
+                            <td><input type="file" accept=".jpg, .jpeg" id="img" name="img" class="fixed-width"></td>
+                        </tr>
+                        <tr class="tr-buttons">
+                            <td><button id="btn" class="btnLink" type="button">Cancel</button></td>
+                            <td><button type="submit" formmethod="POST" formaction="/trades">Post</button></td>        
+                        </tr>
+                    </table>
+                </form>
+                <script>
+                    document.getElementById("btn").onclick = function () {
+                        location.href = "/trades>";
+                    };
+                </script>
+            </div>
+            <div class="content-new-img">
+                <img src="../public/images_folder/new_listing.jpg" alt="create-img" /></div>
+            </div>
+        </div>
+
+    </div>
+<%- include('../partials/footer.ejs')%>

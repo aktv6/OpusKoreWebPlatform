@@ -1,0 +1,26 @@
+<%- include('../partials/header.ejs')%>
+    <div class = "content">
+        <h2>All products</h2>
+		<%if(Object.keys(genres).length){%>
+			<% for (const [key, value] of Object.entries(genres)) {%>
+				<div class ='content-components'>
+					<h3><%=key%></h3>
+					<div class='post'>
+						<% value.forEach((val, ind) => {%>
+							<div class = "post-component">
+								<div class = "post-img"><a href = '/trades/<%= val._id%>'><img src="<%=val.img%>" alt="post-img"></a></div>
+								<div class="post-info">
+									<a href = '/trades/<%= val._id%>'><p class="trades-p"><%=val.title%></p></a>
+									<p class="trades-p"><%=val.artist%></p>
+								</div>
+							</div>
+						<%})%>
+					</div>
+				</div>
+			<%}%>
+		<%}
+		else {%>
+			<p>There are no products to display.</p>
+		<%}%>
+	</div>
+<%- include('../partials/footer.ejs')%>

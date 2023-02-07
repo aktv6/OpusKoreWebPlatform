@@ -1,0 +1,67 @@
+<%- include('../partials/header.ejs')%>
+    <div class = "content">
+        <h2>Trade request</h2>
+        <form class="req-form">
+            <div class="profile-component">
+                <%if(availableItems.length) {%>
+                    <h3>Your inventory: </h3>
+                    <div class="post">
+                        <%availableItems.forEach(item => {%>
+                            <div class="post-component-2">
+                                <label>
+                                    <input type="radio" name="optionItem" value="<%=item._id%>" required>
+                                    <div>
+                                        <div class="post-img"><img src="<%=item.img%>" alt="post-img"></a></div>
+                                        <div class="post-info">
+                                            <table>
+                                                <tr>
+                                                    <td class="align-top"><label for="title">Title: </label></td>
+                                                    <td class="align-right"><p><%=item.title%></a></p></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="align-top"><label for="artist">Artist: </label></td>
+                                                    <td class="align-right"><p><%=item.artist%></p></td>
+                                                </tr>
+                                            </table>   
+                                        </div>
+                                    </div>
+                                </label>    
+                            </div>
+                        <%})%>
+                    </div>
+                <%}%>
+            </div>
+            <div class="profile-component">
+                <h3>Item of interest: </h3>
+                <div class="post">
+                    <div class="post-component">
+                        <div class="post-img"><img src="<%=offerItem.img%>" alt="post-img"></a></div>
+                        <div class="post-info">
+                            <table>
+                                <tr>
+                                    <td class="align-top"><label for="title">Title: </label></td>
+                                    <td class="align-right"><p><%=offerItem.title%></a></p></td>
+                                </tr>
+                                <tr>
+                                    <td class="align-top"><label for="artist">Artist: </label></td>
+                                    <td class="align-right"><p><%=offerItem.artist%></p></td>
+                                </tr>
+                            </table>   
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" name="offeree" value="<%=offerItem.owner._id%>">
+            <input type="hidden" name="interestItem" value="<%=offerItem._id%>">                        
+            <div class="request-buttons">
+                <button class="btnLink" type="button" id="btn">Cancel</button>
+                <button class="btnPost" type="submit" formmethod="POST" formaction="/trades/offer">Make offer</button>
+            </div>
+            <script>
+                document.getElementById("btn").onclick = function () {
+                    location.href = "/trades/<%=offerItem._id%>";
+                };
+            </script>
+        </form>
+    </div>
+<%- include('../partials/footer.ejs')%>
